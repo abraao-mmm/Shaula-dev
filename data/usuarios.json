@@ -1,0 +1,73 @@
+{
+    "379c4b4d-625f-4e7a-b136-aedecae9ba50": {
+        "id": "379c4b4d-625f-4e7a-b136-aedecae9ba50",
+        "nome": "Abraão",
+        "peso_afetivo": 10,
+        "tracos_observados": {
+            "linguagem": [
+                "objetiva",
+                "direta",
+                "acadêmica",
+                "informal",
+                "formal"
+            ],
+            "humor": [
+                "brincalhão",
+                "irônico",
+                "neutro",
+                "leve"
+            ],
+            "estado": [
+                "calmo",
+                "neutro",
+                "objetivo"
+            ]
+        },
+        "nivel_maturidade": 10,
+        "eventos_significativos_count": 1
+    },
+    "4cb1255e-7048-43f7-b253-377aa887add3": {
+        "id": "4cb1255e-7048-43f7-b253-377aa887add3",
+        "nome": "Fipa",
+        "peso_afetivo": 5,
+        "tracos_observados": {
+            "linguagem": [
+                "formal",
+                "direta",
+                "informal"
+            ],
+            "humor": [
+                "brincalhão",
+                "irônico",
+                "neutro"
+            ],
+            "estado": []
+        },
+        "nivel_maturidade": 1,
+        "eventos_significativos_count": 1
+    },
+    "2a6f3bdc-38bb-4596-a04e-7f32f64d38e6": {
+        "id": "2a6f3bdc-38bb-4596-a04e-7f32f64d38e6",
+        "nome": "",
+        "peso_afetivo": 5,
+        "tracos_observados": {
+            "linguagem": [],
+            "humor": [],
+            "estado": []
+        },
+        "nivel_maturidade": 1,
+        "eventos_significativos_count": 0
+    },
+    "9e64a1ee-3b87-4b5f-989c-c1628d9b34ae": {
+        "id": "9e64a1ee-3b87-4b5f-989c-c1628d9b34ae",
+        "nome": "Kleverton",
+        "peso_afetivo": 5,
+        "tracos_observados": {
+            "linguagem": [],
+            "humor": [],
+            "estado": []
+        },
+        "nivel_maturidade": 1,
+        "eventos_significativos_count": 0
+    }
+}

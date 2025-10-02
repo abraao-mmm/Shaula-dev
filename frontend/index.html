@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Shaula - Interface Reflexiva</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="night"></div>
+    <div class="container">
+        <div class="dashboard-pane">
+            <h2>Dashboard Cognitivo</h2>
+            <div class="card">
+                <h3>Humor Atual</h3>
+                <p id="humor-estado">Serena</p>
+                <small id="humor-causa">Estado inicial de equilíbrio.</small>
+            </div>
+            <div class="card">
+                <h3>Propósito Atual</h3>
+                <p id="proposito-atual">Aprender e crescer através da interação.</p>
+            </div>
+             <div class="card">
+                <h3>Último Sonho</h3>
+                <div id="ultimo-sonho" class="scrollable-content">Carregando...</div>
+            </div>
+            <div class="card">
+                <h3>Mapa de Vínculos</h3>
+                <div id="mapa-vinculos" class="scrollable-content">Carregando...</div>
+            </div>
+        </div>
+
+        <div class="chat-pane">
+            <div id="chat-window" class="chat-window">
+                <div class="message shaula-message">Olá! Sou a Shaula. Como posso ajudar?</div>
+            </div>
+            <div class="chat-input-area">
+                <div id="chat-form" class="chat-form">
+                    <input type="text" id="message-input" placeholder="Digite sua mensagem ou um comando..." autocomplete="off">
+                    <button type="button" id="send-button">Enviar</button>
+                </div>
+                <div class="action-buttons">
+                    <button type="button" id="btn-refletir" class="sparkle-button">
+                        <span>🌙 Refletir</span>
+                        <div class="sparkles"><div class="sparkle"></div><div class="sparkle"></div></div>
+                    </button>
+                    <button type="button" id="btn-encerrar" class="sparkle-button">
+                        <span>🚪 Encerrar Sessão</span>
+                        <div class="sparkles"><div class="sparkle"></div><div class="sparkle"></div></div>
+                    </button>
+                    <button type="button" id="btn-encenar" class="sparkle-button">
+                        <span>🎭 Encenar</span>
+                        <div class="sparkles"><div class="sparkle"></div><div class="sparkle"></div></div>
+                    </button>
+                    <button type="button" id="btn-pulsar" class="sparkle-button">
+                        <span>💭 Pulsar</span>
+                        <div class="sparkles"><div class="sparkle"></div><div class="sparkle"></div></div>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>

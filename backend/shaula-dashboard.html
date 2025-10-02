@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard Cognitivo da Shaula</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            background-color: #1a202c;
+            color: #e2e8f0;
+            padding: 20px;
+            max-width: 900px;
+            margin: auto;
+        }
+        h1 {
+            text-align: center;
+            color: #f6ad55;
+        }
+        input, button {
+            padding: 8px;
+            border-radius: 5px;
+            margin: 10px 5px;
+            border: none;
+        }
+        input {
+            width: 400px;
+        }
+        button {
+            background-color: #4fd1c5;
+            color: #1a202c;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .card { 
+            border: 1px solid #4a5568; 
+            border-radius: 8px; 
+            padding: 20px; 
+            margin: 15px 0;
+            background-color: #2d3748;
+            color: #e2e8f0;
+        }
+        .sonho { border-left: 6px solid #805ad5; }
+        .crise { border-left: 6px solid #e53e3e; }
+        .original { color: #f6e05e; margin-top: 10px; }
+        .modulado { color: #68d391; margin-top: 10px; }
+        .scrollable-content {
+            max-height: 300px;
+            overflow-y: auto;
+            white-space: pre-line;
+            padding: 10px;
+            background-color: #1a202c;
+            border-radius: 5px;
+            margin-top: 5px;
+            border: 1px solid #4a5568;
+        }
+        .section-header {
+            display: flex;
+            align-items: baseline;
+            gap: 15px;
+            margin-top: 30px;
+            border-bottom: 1px solid #4a5568;
+            padding-bottom: 5px;
+        }
+        .section-count {
+            background-color: #4a5568;
+            padding: 3px 8px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+        }
+        .error {
+            color: #fc8181;
+            background-color: #2d2d2d;
+            padding: 10px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Jornada Cognitiva da Shaula</h1>
+
+    <div>
+        <label for="user-id">User ID:</label>
+        <input type="text" id="user-id" value="8f1c58b9-56be-47a6-aa90-9738b5f733fc">
+        <button onclick="carregarDados()">Carregar</button>
+    </div>
+
+    <div id="dashboard"></div>
+
+    <script>
+        async function carregarDados() {
+            const userId = document.getElementById('user-id').value;
+            const dashboard = document.getElementById('dashboard');
+            dashboard.innerHTML = "<p>Carregando dados...</p>";
+
+            try {
+                // Sonhos
+                const sonhosRes = await fetch(`/sonhos/${userId}`);
+                if (!sonhosRes.ok) throw new Error('Erro ao buscar sonhos: ' + sonhosRes.status);
+                const sonhos = await sonhosRes.json();
+
+                // Crises
+                const crisesRes = await fetch(`/crises/${userId}`);
+                if (!crisesRes.ok) throw new Error('Erro ao buscar crises: ' + crisesRes.status);
+                const crises = await crisesRes.json();
+
+                let html = "";
+
+                // Seção de Sonhos
+                html += `<div class="section-header"><h2>Sonhos</h2><span class="section-count">${sonhos.length} registros</span></div>`;
+                if (sonhos.length === 0) {
+                    html += `<div class="card"><p>Nenhum sonho registrado.</p></div>`;
+                } else {
+                    sonhos.slice(-5).reverse().forEach(sonho => {
+                        html += `
+                            <div class="card sonho">
+                                <small>${new Date(sonho.timestamp).toLocaleString()}</small>
+                                <div class="scrollable-content">${sonho.sonho}</div>
+                            </div>
+                        `;
+                    });
+                }
+
+                // Seção de Crises
+                html += `<div class="section-header"><h2>Crises Existenciais</h2><span class="section-count">${crises.length} registros</span></div>`;
+                if (crises.length === 0) {
+                    html += `<div class="card"><p>Nenhuma crise registrada.</p></div>`;
+                } else {
+                    crises.slice(-3).reverse().forEach(crise => {
+                        html += `
+                            <div class="card crise">
+                                <small>${new Date(crise.timestamp).toLocaleString()}</small>
+                                <h3>${crise.tipo_crise}</h3>
+                                <div class="original">
+                                    <strong>Pensamento Original:</strong>
+                                    <div class="scrollable-content">${crise.pensamento_original}</div>
+                                </div>
+                                <div class="modulado">
+                                    <strong>Pensamento Modulado:</strong>
+                                    <div class="scrollable-content">${crise.pensamento_modulado}</div>
+                                </div>
+                            </div>
+                        `;
+                    });
+                }
+
+                dashboard.innerHTML = html;
+
+            } catch (error) {
+                dashboard.innerHTML = `<div class="error"><strong>Erro:</strong> ${error.message}</div>`;
+            }
+        }
+
+        // Auto-carregar ao abrir a página
+        carregarDados();
+    </script>
+</body>
+</html>

@@ -1,0 +1,14 @@
+{
+    "5415f0a7-9a1e-401c-b774-02158fee4c7b": {
+        "id": "5415f0a7-9a1e-401c-b774-02158fee4c7b",
+        "nome": "Abraão",
+        "peso_afetivo": 10,
+        "tracos_observados": {
+            "linguagem": [],
+            "humor": [],
+            "estado": []
+        },
+        "nivel_maturidade": 1,
+        "eventos_significativos_count": 0
+    }
+}
